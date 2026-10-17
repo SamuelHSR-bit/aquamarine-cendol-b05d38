@@ -97,6 +97,7 @@ nav {
 }
 
 .nav-item {
+    display: block;
     width: 100%;
 
     padding: 13px;
@@ -107,8 +108,11 @@ nav {
     background: transparent;
 
     color: #bdc8c0;
+    text-decoration: none;
 
     text-align: left;
+    font-family: inherit;
+    font-size: 13.3333px;
 
     cursor: pointer;
 
@@ -117,14 +121,15 @@ nav {
 
 .nav-item:hover {
     background: rgba(255, 255, 255, 0.06);
-
     color: white;
 }
 
-.nav-item.ativo {
-    background: rgba(93, 146, 105, 0.22);
 
-    color: white;
+.nav-item.ativo {
+    background: #20392a;
+    color: #ffffff;
+
+    box-shadow: inset 3px 0 #77a883;
 }
 
 .icone {
@@ -181,9 +186,9 @@ nav {
 }
 
 
-/* =========================
-   TOPBAR
-========================= */
+/* 
+   topbar
+ */
 
 .topbar {
     height: 65px;
@@ -251,9 +256,7 @@ nav {
 }
 
 
-/* =========================
-   PERFIL
-========================= */
+/* perfil */
 
 .perfil-btn {
     border: none;
@@ -378,9 +381,7 @@ nav {
 }
 
 
-/* =========================
-   BOAS VINDAS
-========================= */
+/* boas vindas */
 
 .boas-vindas {
     padding: 32px 35px 20px;
@@ -431,9 +432,7 @@ nav {
 }
 
 
-/* =========================
-   CARDS
-========================= */
+/* cards */
 
 .cards {
     padding: 10px 35px 20px;
@@ -495,9 +494,7 @@ nav {
 }
 
 
-/* =========================
-   PAINÉIS
-========================= */
+/* paineis */
 
 .grid-principal {
     padding: 0 35px 15px;
@@ -557,9 +554,7 @@ nav {
 }
 
 
-/* =========================
-   MAPA
-========================= */
+/* mapa */
 
 .mapa {
     height: 390px;
@@ -1070,9 +1065,7 @@ td {
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* Footer */
 
 footer {
     min-height: 125px;
@@ -1309,7 +1302,12 @@ footer small {
 @media (max-width: 760px) {
 
     .sidebar {
-        transform: translateX(-100%);
+    width: min(220px, 82vw);
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translateX(-100%);
     }
 
     .sidebar.aberta {
@@ -1462,3 +1460,6 @@ footer small {
 }
 
 /* gambiarra para sidebar ficar fechada apos iniciar o sistema */
+
+
+

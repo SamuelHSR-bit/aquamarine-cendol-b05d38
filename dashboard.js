@@ -52,21 +52,17 @@ document.addEventListener("click", function(event) {
 
 function atualizarData() {
 
-    const elemento = document.getElementById("dataAtual");
+const elemento = document.getElementById("dataAtual");
+
+    if (!elemento) return;
 
     const agora = new Date();
 
-    const configuracao = {
+    elemento.textContent = agora.toLocaleDateString("pt-BR", {
         day: "2-digit",
         month: "long",
         year: "numeric"
-    };
-
-    elemento.textContent =
-        agora.toLocaleDateString(
-            "pt-BR",
-            configuracao
-        );
+    });
 }
 
 atualizarData();
@@ -238,9 +234,7 @@ function novaAvaliacao() {
 }
 
 
-// =============================
-// SUPORTE
-// =============================
+// suporte // 
 
 function abrirSuporte() {
 
@@ -251,9 +245,7 @@ function abrirSuporte() {
 }
 
 
-// =============================
-// ESC FECHA JANELAS
-// =============================
+//  ESC fecha janelas // 
 
 document.addEventListener(
     "keydown",

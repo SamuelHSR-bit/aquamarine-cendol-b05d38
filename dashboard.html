@@ -23,48 +23,29 @@
             <small>GESTÃO DE ÁREAS DE MINERAÇÃO</small>
         </div>
 
-        <nav>
+       <nav>
+            <nav>
+    <a href="dashboard.html" class="nav-item ativo">
+        <span class="icone">🎛️</span>
+        Dashboard
+    </a>
 
-            <button class="nav-item ativo">
-                <span class="icone">⌂</span>
-                Dashboard
-            </button>
+    <a href="setores.html" class="nav-item">
+        <span class="icone">📍</span>
+        Setores
+    </a>
 
-            <button class="nav-item">
-                <span class="icone">◇</span>
-                Áreas
-            </button>
+    <a href="operacoes.html" class="nav-item">
+        <span class="icone">⛏️</span>
+        Operações gerais
+    </a>
 
-            <button class="nav-item">
-                <span class="icone">△</span>
-                Setores
-            </button>
-
-            <button class="nav-item">
-                <span class="icone">⚒</span>
-                Operações
-            </button>
-
-            <button class="nav-item">
-                <span class="icone">▤</span>
-                Avaliações
-            </button>
-
-            <button class="nav-item">
-                <span class="icone">▧</span>
-                Relatórios
-            </button>
-
-            <button class="nav-item">
-                <span class="icone">⌖</span>
-                Mapa
-            </button>
-
-            <button class="nav-item admin-item">
-                <span class="icone">♙</span>
-                Usuários
-            </button>
-
+    <a href="relatorios.html" class="nav-item">
+        <span class="icone">📊</span>
+        Meus Relatórios
+    </a>
+    
+</nav>
         </nav>
 
         <div class="suporte-sidebar">
@@ -148,7 +129,7 @@
                     <button>Meu perfil</button>
                     <button>Documentos</button>
                     <button>Meus relatórios</button>
-                    <button>Histórico de avaliações</button>
+                    <button>Histórico de Relatórios</button>
 
                     <hr>
 
@@ -179,7 +160,7 @@
                 </h1>
 
                 <p>
-                    Acompanhe as áreas, operações e avaliações
+                    Acompanhe as áreas, operações e Relatórios
                     técnicas da GeoMTR.
                 </p>
             </div>
@@ -448,11 +429,11 @@
                 <button
                     class="resumo-item"
                     onclick="abrirModal(
-                        'Minhas avaliações',
-                        'Você realizou 8 avaliações técnicas durante o mês de outubro.'
+                        'Minhas Relatórios',
+                        'Você realizou 8 Relatórios técnicas durante o mês de outubro.'
                     )">
 
-                    <span>Avaliações realizadas</span>
+                    <span>Relatórios realizadas</span>
                     <strong>8</strong>
                     <small>+33% em relação ao mês anterior</small>
 
@@ -463,7 +444,7 @@
                     class="resumo-item"
                     onclick="abrirModal(
                         'Setores avaliados',
-                        'Você realizou avaliações em 5 setores diferentes neste mês.'
+                        'Você realizou Relatórios em 5 setores diferentes neste mês.'
                     )">
 
                     <span>Setores avaliados</span>
@@ -484,7 +465,7 @@
                         'Samuel Oliveira'
                     )">
 
-                    <span>Última avaliação</span>
+                    <span>Última </span>
                     <strong>01/10</strong>
                     <small>ST-03 • Setor Leste</small>
 
@@ -508,7 +489,7 @@
                 <span class="acao-icone">+</span>
 
                 <div>
-                    <strong>Nova Avaliação</strong>
+                    <strong>Novo Relatório</strong>
                     <small>Registrar atividade em campo</small>
                 </div>
 
@@ -521,7 +502,7 @@
                 class="acao"
                 onclick="abrirModal(
                     'Meus Relatórios',
-                    'Aqui serão exibidos os relatórios e avaliações técnicas produzidos pelo usuário autenticado.'
+                    'Aqui serão exibidos os relatórios e Relatórios técnicas produzidos pelo usuário autenticado.'
                 )">
 
                 <span class="acao-icone">▤</span>
@@ -556,7 +537,7 @@
                 class="acao"
                 onclick="abrirModal(
                     'Histórico',
-                    'Aqui será apresentado o histórico de avaliações, operações e coletas realizadas pelo usuário.'
+                    'Aqui será apresentado o histórico de Relatórios, operações e coletas realizadas pelo usuário.'
                 )">
 
                 <span class="acao-icone">↺</span>
@@ -584,7 +565,7 @@
                 <div class="painel-header">
 
                     <div>
-                        <h2>Últimas Avaliações</h2>
+                        <h2>Últimas Relatórios</h2>
                         <p>Atividades técnicas recentes.</p>
                     </div>
 
@@ -618,7 +599,7 @@
                                 <td>01/10/2026</td>
                                 <td>ST-03</td>
                                 <td>Geológica</td>
-                                <td>Samuel Oliveira</td>
+                                <td>Samuel Sousa</td>
                                 <td>
                                     <span class="tag concluido">
                                         Concluído
@@ -753,7 +734,7 @@
                 </p>
 
                 <small>
-                    Versão 0.0.1 • Ambiente Corporativo
+                    Versão 0.0.3 • Ac
                 </small>
             </div>
 
