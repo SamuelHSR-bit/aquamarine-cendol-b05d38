@@ -1,54 +1,100 @@
 // Funções de navegação desta página. O restante da lógica está abaixo.
 function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar");
-    const conteudo = document.querySelector(".conteudo");
-    const overlay = document.getElementById("sidebarOverlay");
+  const sidebar = document.getElementById("sidebar");
+  const conteudo = document.querySelector(".conteudo");
+  const overlay = document.getElementById("sidebarOverlay");
 
-    if (window.innerWidth > 760) {
-        sidebar.classList.toggle("aberta");
-        conteudo.classList.toggle("sidebar-aberta");
-    } else {
-        sidebar.classList.toggle("aberta");
-        overlay.classList.toggle("aberto");
-    }
+  if (window.innerWidth > 760) {
+    sidebar.classList.toggle("aberta");
+    conteudo.classList.toggle("sidebar-aberta");
+  } else {
+    sidebar.classList.toggle("aberta");
+    overlay.classList.toggle("aberto");
+  }
 }
 
 function togglePerfil() {
-    const menu = document.getElementById("perfilMenu");
-    menu.classList.toggle("aberto");
-    const botao = document.querySelector(".perfil-btn");
-    if (botao) botao.setAttribute("aria-expanded", menu.classList.contains("aberto") ? "true" : "false");
+  const menu = document.getElementById("perfilMenu");
+  menu.classList.toggle("aberto");
+  const botao = document.querySelector(".perfil-btn");
+  if (botao)
+    botao.setAttribute(
+      "aria-expanded",
+      menu.classList.contains("aberto") ? "true" : "false",
+    );
 }
 
-document.addEventListener("click", event => {
-    const menu = document.getElementById("perfilMenu");
-    const botao = document.querySelector(".perfil-btn");
-    if (menu && botao && !menu.contains(event.target) && !botao.contains(event.target)) {
-        menu.classList.remove("aberto");
-        botao.setAttribute("aria-expanded", "false");
-    }
+document.addEventListener("click", (event) => {
+  const menu = document.getElementById("perfilMenu");
+  const botao = document.querySelector(".perfil-btn");
+  if (
+    menu &&
+    botao &&
+    !menu.contains(event.target) &&
+    !botao.contains(event.target)
+  ) {
+    menu.classList.remove("aberto");
+    botao.setAttribute("aria-expanded", "false");
+  }
 });
 
 function sairSistema() {
-    window.location.href = "./index.html";
+  window.location.href = "./index.html";
 }
 
 function abrirSuporte() {
-    mostrarToast("Para suporte técnico, entre em contato com o administrador do GeoMTR.");
+  mostrarToast(
+    "Para suporte técnico, entre em contato com o administrador do GeoMTR.",
+  );
 }
 
 // Página Funcionários — protótipo de interface, sem banco de dados conectado.
 // Os dados são mantidos apenas durante esta sessão do navegador.
 
 const funcionariosIniciais = [
-    { ra: "A0001", nome: "Administrador GeoMTR", cargo: "Administrador do sistema", perfil: "Administrador", cadastro: "17/10/2026", status: "Ativo" },
-    { ra: "F2456", nome: "Samuel Oliveira", cargo: "Geólogo", perfil: "Funcionário", cadastro: "12/09/2026", status: "Ativo" },
-    { ra: "F2457", nome: "Mariana Costa", cargo: "Geóloga de campo", perfil: "Funcionário", cadastro: "18/09/2026", status: "Ativo" },
-    { ra: "A0002", nome: "Roberto Almeida", cargo: "Coordenador técnico", perfil: "Administrador", cadastro: "25/09/2026", status: "Ativo" },
-    { ra: "F2458", nome: "Lucas Ferreira", cargo: "Técnico de mineração", perfil: "Funcionário", cadastro: "03/10/2026", status: "Inativo" }
+  {
+    ra: "A0001",
+    nome: "Administrador GeoMTR",
+    cargo: "Administrador do sistema",
+    perfil: "Administrador",
+    cadastro: "17/10/2026",
+    status: "Ativo",
+  },
+  {
+    ra: "F2456",
+    nome: "Samuel Oliveira",
+    cargo: "Geólogo",
+    perfil: "Funcionário",
+    cadastro: "12/09/2026",
+    status: "Ativo",
+  },
+  {
+    ra: "F2457",
+    nome: "Mariana Costa",
+    cargo: "Geóloga de campo",
+    perfil: "Funcionário",
+    cadastro: "18/09/2026",
+    status: "Ativo",
+  },
+  {
+    ra: "A0002",
+    nome: "Roberto Almeida",
+    cargo: "Coordenador técnico",
+    perfil: "Administrador",
+    cadastro: "25/09/2026",
+    status: "Ativo",
+  },
+  {
+    ra: "F2458",
+    nome: "Lucas Ferreira",
+    cargo: "Técnico de mineração",
+    perfil: "Funcionário",
+    cadastro: "03/10/2026",
+    status: "Inativo",
+  },
 ];
 
-let funcionarios = funcionariosIniciais.map(item => ({ ...item }));
+let funcionarios = funcionariosIniciais.map((item) => ({ ...item }));
 
 const listaFuncionarios = document.getElementById("listaFuncionarios");
 const buscaFuncionario = document.getElementById("buscaFuncionario");
@@ -61,56 +107,76 @@ const previewRA = document.querySelector("#previewRA strong");
 const funcToast = document.getElementById("funcToast");
 
 function iniciais(nome) {
-    return nome.trim().split(/\s+/).slice(0, 2).map(parte => parte[0]).join("").toUpperCase();
+  return nome
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((parte) => parte[0])
+    .join("")
+    .toUpperCase();
 }
 
 function proximoRA(perfil) {
-    const prefixo = perfil === "Administrador" ? "A" : "F";
-    const numeros = funcionarios
-        .filter(usuario => usuario.ra.startsWith(prefixo))
-        .map(usuario => Number(usuario.ra.slice(1)))
-        .filter(Number.isFinite);
+  const prefixo = perfil === "Administrador" ? "A" : "F";
+  const numeros = funcionarios
+    .filter((usuario) => usuario.ra.startsWith(prefixo))
+    .map((usuario) => Number(usuario.ra.slice(1)))
+    .filter(Number.isFinite);
 
-    const proximo = Math.max(0, ...numeros) + 1;
-    return prefixo + String(proximo).padStart(4, "0");
+  const proximo = Math.max(0, ...numeros) + 1;
+  return prefixo + String(proximo).padStart(4, "0");
 }
 
 function escaparHTML(valor) {
-    return String(valor).replace(/[&<>"']/g, caractere => ({
+  return String(valor).replace(
+    /[&<>"']/g,
+    (caractere) =>
+      ({
         "&": "&amp;",
         "<": "&lt;",
         ">": "&gt;",
         '"': "&quot;",
-        "'": "&#39;"
-    }[caractere]));
+        "'": "&#39;",
+      })[caractere],
+  );
 }
 
 function atualizarIndicadores() {
-    document.getElementById("totalUsuarios").textContent = funcionarios.length;
-    document.getElementById("totalAdmins").textContent = funcionarios.filter(u => u.perfil === "Administrador").length;
-    document.getElementById("totalFuncionarios").textContent = funcionarios.filter(u => u.perfil === "Funcionário").length;
-    document.getElementById("totalInativos").textContent = funcionarios.filter(u => u.status === "Inativo").length;
+  document.getElementById("totalUsuarios").textContent = funcionarios.length;
+  document.getElementById("totalAdmins").textContent = funcionarios.filter(
+    (u) => u.perfil === "Administrador",
+  ).length;
+  document.getElementById("totalFuncionarios").textContent =
+    funcionarios.filter((u) => u.perfil === "Funcionário").length;
+  document.getElementById("totalInativos").textContent = funcionarios.filter(
+    (u) => u.status === "Inativo",
+  ).length;
 }
 
 function renderizarFuncionarios() {
-    const termo = buscaFuncionario.value.trim().toLocaleLowerCase("pt-BR");
-    const perfil = filtroPerfil.value;
-    const status = filtroStatus.value;
+  const termo = buscaFuncionario.value.trim().toLocaleLowerCase("pt-BR");
+  const perfil = filtroPerfil.value;
+  const status = filtroStatus.value;
 
-    const filtrados = funcionarios.filter(usuario => {
-        const combinaBusca = usuario.nome.toLocaleLowerCase("pt-BR").includes(termo) ||
-            usuario.ra.toLocaleLowerCase("pt-BR").includes(termo) ||
-            usuario.cargo.toLocaleLowerCase("pt-BR").includes(termo);
-        return combinaBusca &&
-            (perfil === "todos" || usuario.perfil === perfil) &&
-            (status === "todos" || usuario.status === status);
-    });
+  const filtrados = funcionarios.filter((usuario) => {
+    const combinaBusca =
+      usuario.nome.toLocaleLowerCase("pt-BR").includes(termo) ||
+      usuario.ra.toLocaleLowerCase("pt-BR").includes(termo) ||
+      usuario.cargo.toLocaleLowerCase("pt-BR").includes(termo);
+    return (
+      combinaBusca &&
+      (perfil === "todos" || usuario.perfil === perfil) &&
+      (status === "todos" || usuario.status === status)
+    );
+  });
 
-    listaFuncionarios.innerHTML = filtrados.map(usuario => {
-        const admin = usuario.perfil === "Administrador";
-        const podeDesativar = usuario.ra !== "A0001";
-        const acaoStatus = usuario.status === "Ativo" ? "Desativar conta" : "Reativar conta";
-        return `
+  listaFuncionarios.innerHTML = filtrados
+    .map((usuario) => {
+      const admin = usuario.perfil === "Administrador";
+      const podeDesativar = usuario.ra !== "A0001";
+      const acaoStatus =
+        usuario.status === "Ativo" ? "Desativar conta" : "Reativar conta";
+      return `
             <tr>
                 <td>
                     <div class="usuario-celula">
@@ -132,106 +198,134 @@ function renderizarFuncionarios() {
                     </div>
                 </td>
             </tr>`;
-    }).join("");
+    })
+    .join("");
 
-    document.getElementById("estadoVazio").hidden = filtrados.length > 0;
-    document.getElementById("contadorResultados").textContent =
-        `Exibindo ${filtrados.length} de ${funcionarios.length} usuários`;
-    atualizarIndicadores();
+  document.getElementById("estadoVazio").hidden = filtrados.length > 0;
+  document.getElementById("contadorResultados").textContent =
+    `Exibindo ${filtrados.length} de ${funcionarios.length} usuários`;
+  atualizarIndicadores();
 }
 
 function abrirModalFuncionario() {
-    formFuncionario.reset();
-    erroCadastro.textContent = "";
-    atualizarPreviewRA();
-    modalFuncionario.hidden = false;
-    document.body.style.overflow = "hidden";
-    document.getElementById("nomeFuncionario").focus();
+  formFuncionario.reset();
+  erroCadastro.textContent = "";
+  atualizarPreviewRA();
+  modalFuncionario.hidden = false;
+  document.body.style.overflow = "hidden";
+  document.getElementById("nomeFuncionario").focus();
 }
 
 function fecharModalFuncionario() {
-    modalFuncionario.hidden = true;
-    document.body.style.overflow = "";
+  modalFuncionario.hidden = true;
+  document.body.style.overflow = "";
 }
 
 function atualizarPreviewRA() {
-    previewRA.textContent = proximoRA(document.getElementById("perfilFuncionario").value);
+  previewRA.textContent = proximoRA(
+    document.getElementById("perfilFuncionario").value,
+  );
 }
 
 function mostrarToast(mensagem, erro = false) {
-    funcToast.textContent = mensagem;
-    funcToast.classList.toggle("erro", erro);
-    funcToast.classList.add("visivel");
-    window.clearTimeout(mostrarToast.timeout);
-    mostrarToast.timeout = window.setTimeout(() => funcToast.classList.remove("visivel"), 3200);
+  funcToast.textContent = mensagem;
+  funcToast.classList.toggle("erro", erro);
+  funcToast.classList.add("visivel");
+  window.clearTimeout(mostrarToast.timeout);
+  mostrarToast.timeout = window.setTimeout(
+    () => funcToast.classList.remove("visivel"),
+    3200,
+  );
 }
 
-document.getElementById("abrirCadastro").addEventListener("click", abrirModalFuncionario);
-document.getElementById("fecharCadastro").addEventListener("click", fecharModalFuncionario);
-document.getElementById("cancelarCadastro").addEventListener("click", fecharModalFuncionario);
-document.getElementById("perfilFuncionario").addEventListener("change", atualizarPreviewRA);
+document
+  .getElementById("abrirCadastro")
+  .addEventListener("click", abrirModalFuncionario);
+document
+  .getElementById("fecharCadastro")
+  .addEventListener("click", fecharModalFuncionario);
+document
+  .getElementById("cancelarCadastro")
+  .addEventListener("click", fecharModalFuncionario);
+document
+  .getElementById("perfilFuncionario")
+  .addEventListener("change", atualizarPreviewRA);
 buscaFuncionario.addEventListener("input", renderizarFuncionarios);
 filtroPerfil.addEventListener("change", renderizarFuncionarios);
 filtroStatus.addEventListener("change", renderizarFuncionarios);
 
-modalFuncionario.addEventListener("click", event => {
-    if (event.target === modalFuncionario) fecharModalFuncionario();
+modalFuncionario.addEventListener("click", (event) => {
+  if (event.target === modalFuncionario) fecharModalFuncionario();
 });
 
-document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && !modalFuncionario.hidden) fecharModalFuncionario();
-});
-
-formFuncionario.addEventListener("submit", event => {
-    event.preventDefault();
-    erroCadastro.textContent = "";
-
-    const nome = document.getElementById("nomeFuncionario").value.trim();
-    const cargo = document.getElementById("cargoFuncionario").value.trim();
-    const perfil = document.getElementById("perfilFuncionario").value;
-    const senha = document.getElementById("senhaTemporaria").value;
-
-    if (nome.length < 3 || cargo.length < 2) {
-        erroCadastro.textContent = "Informe um nome e um cargo válidos.";
-        return;
-    }
-    if (senha.length < 8) {
-        erroCadastro.textContent = "A senha temporária precisa ter pelo menos 8 caracteres.";
-        return;
-    }
-
-    const ra = proximoRA(perfil);
-    const hoje = new Date().toLocaleDateString("pt-BR");
-
-    // A senha não é armazenada. A autenticação será implementada com o backend.
-    funcionarios.push({ ra, nome, cargo, perfil, cadastro: hoje, status: "Ativo" });
-
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !modalFuncionario.hidden)
     fecharModalFuncionario();
-    renderizarFuncionarios();
-    mostrarToast(`Usuário demonstrativo ${ra} criado. Nenhuma senha foi salva.`);
 });
 
-listaFuncionarios.addEventListener("click", event => {
-    const botao = event.target.closest("button[data-acao]");
-    if (!botao) return;
+formFuncionario.addEventListener("submit", (event) => {
+  event.preventDefault();
+  erroCadastro.textContent = "";
 
-    const usuario = funcionarios.find(item => item.ra === botao.dataset.ra);
-    if (!usuario) return;
+  const nome = document.getElementById("nomeFuncionario").value.trim();
+  const cargo = document.getElementById("cargoFuncionario").value.trim();
+  const perfil = document.getElementById("perfilFuncionario").value;
+  const senha = document.getElementById("senhaTemporaria").value;
 
-    if (botao.dataset.acao === "detalhes") {
-        mostrarToast(`${usuario.nome} · ${usuario.ra} · ${usuario.perfil} · ${usuario.status}`);
-        return;
+  if (nome.length < 3 || cargo.length < 2) {
+    erroCadastro.textContent = "Informe um nome e um cargo válidos.";
+    return;
+  }
+  if (senha.length < 8) {
+    erroCadastro.textContent =
+      "A senha temporária precisa ter pelo menos 8 caracteres.";
+    return;
+  }
+
+  const ra = proximoRA(perfil);
+  const hoje = new Date().toLocaleDateString("pt-BR");
+
+  // A senha não é armazenada. A autenticação será implementada com o backend.
+  funcionarios.push({
+    ra,
+    nome,
+    cargo,
+    perfil,
+    cadastro: hoje,
+    status: "Ativo",
+  });
+
+  fecharModalFuncionario();
+  renderizarFuncionarios();
+  mostrarToast(`Usuário demonstrativo ${ra} criado. Nenhuma senha foi salva.`);
+});
+
+listaFuncionarios.addEventListener("click", (event) => {
+  const botao = event.target.closest("button[data-acao]");
+  if (!botao) return;
+
+  const usuario = funcionarios.find((item) => item.ra === botao.dataset.ra);
+  if (!usuario) return;
+
+  if (botao.dataset.acao === "detalhes") {
+    mostrarToast(
+      `${usuario.nome} · ${usuario.ra} · ${usuario.perfil} · ${usuario.status}`,
+    );
+    return;
+  }
+
+  if (botao.dataset.acao === "status") {
+    if (usuario.ra === "A0001") {
+      mostrarToast(
+        "A conta inicial não pode ser desativada nesta demonstração.",
+        true,
+      );
+      return;
     }
-
-    if (botao.dataset.acao === "status") {
-        if (usuario.ra === "A0001") {
-            mostrarToast("A conta inicial não pode ser desativada nesta demonstração.", true);
-            return;
-        }
-        usuario.status = usuario.status === "Ativo" ? "Inativo" : "Ativo";
-        renderizarFuncionarios();
-        mostrarToast(`Status de ${usuario.ra} alterado para ${usuario.status}.`);
-    }
+    usuario.status = usuario.status === "Ativo" ? "Inativo" : "Ativo";
+    renderizarFuncionarios();
+    mostrarToast(`Status de ${usuario.ra} alterado para ${usuario.status}.`);
+  }
 });
 
 renderizarFuncionarios();

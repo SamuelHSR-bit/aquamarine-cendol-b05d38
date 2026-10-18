@@ -1,130 +1,96 @@
-// =============================
+//
 // MENU LATERAL
-// =============================
+//
 
 function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar");
-    const conteudo = document.querySelector(".conteudo");
-    const overlay = document.getElementById("sidebarOverlay");
+  const sidebar = document.getElementById("sidebar");
+  const conteudo = document.querySelector(".conteudo");
+  const overlay = document.getElementById("sidebarOverlay");
 
-    if (window.innerWidth > 760) {
-        sidebar.classList.toggle("aberta");
-        conteudo.classList.toggle("sidebar-aberta");
-    } else {
-        sidebar.classList.toggle("aberta");
-        overlay.classList.toggle("aberto");
-    }
+  if (window.innerWidth > 760) {
+    sidebar.classList.toggle("aberta");
+    conteudo.classList.toggle("sidebar-aberta");
+  } else {
+    sidebar.classList.toggle("aberta");
+    overlay.classList.toggle("aberto");
+  }
 }
 
-// =============================
+//
 // MENU DO PERFIL
-// =============================
+//
 
 function togglePerfil() {
+  const menu = document.getElementById("perfilMenu");
 
-    const menu = document.getElementById("perfilMenu");
-
-    menu.classList.toggle("aberto");
+  menu.classList.toggle("aberto");
 }
-
 
 // Fecha o perfil clicando fora dele
 
-document.addEventListener("click", function(event) {
+document.addEventListener("click", function (event) {
+  const menu = document.getElementById("perfilMenu");
+  const botao = document.querySelector(".perfil-btn");
 
-    const menu = document.getElementById("perfilMenu");
-    const botao = document.querySelector(".perfil-btn");
-
-    if (
-        !menu.contains(event.target) &&
-        !botao.contains(event.target)
-    ) {
-
-        menu.classList.remove("aberto");
-    }
-
+  if (!menu.contains(event.target) && !botao.contains(event.target)) {
+    menu.classList.remove("aberto");
+  }
 });
 
-
-// =============================
+//
 // DATA
-// =============================
+//
 
 function atualizarData() {
+  const elemento = document.getElementById("dataAtual");
 
-const elemento = document.getElementById("dataAtual");
+  if (!elemento) return;
 
-    if (!elemento) return;
+  const agora = new Date();
 
-    const agora = new Date();
-
-    elemento.textContent = agora.toLocaleDateString("pt-BR", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric"
-    });
+  elemento.textContent = agora.toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
 }
 
 atualizarData();
 
-
-// =============================
+//
 // MODAL
-// =============================
+//
 
 function abrirModal(titulo, texto) {
+  const modal = document.getElementById("modalOverlay");
 
-    const modal = document.getElementById("modalOverlay");
+  document.getElementById("modalTitulo").textContent = titulo;
 
-    document.getElementById("modalTitulo")
-        .textContent = titulo;
+  document.getElementById("modalConteudo").innerHTML = `<p>${texto}</p>`;
 
-    document.getElementById("modalConteudo")
-        .innerHTML = `<p>${texto}</p>`;
-
-    modal.classList.add("aberto");
+  modal.classList.add("aberto");
 }
-
 
 function fecharModal() {
-
-    document
-        .getElementById("modalOverlay")
-        .classList.remove("aberto");
+  document.getElementById("modalOverlay").classList.remove("aberto");
 }
-
 
 function fecharModalFundo(event) {
-
-    if (event.target.id === "modalOverlay") {
-
-        fecharModal();
-    }
+  if (event.target.id === "modalOverlay") {
+    fecharModal();
+  }
 }
 
-
-// =============================
+//
 // DETALHES DO SETOR
-// =============================
+//
 
-function abrirSetor(
-    codigo,
-    nome,
-    status,
-    percentual,
-    area,
-    responsavel
-) {
+function abrirSetor(codigo, nome, status, percentual, area, responsavel) {
+  const modal = document.getElementById("modalOverlay");
 
-    const modal =
-        document.getElementById("modalOverlay");
+  document.getElementById("modalTitulo").textContent = `${codigo} — ${nome}`;
 
-    document.getElementById("modalTitulo")
-        .textContent = `${codigo} — ${nome}`;
-
-
-    document.getElementById("modalConteudo")
-        .innerHTML = `
+  document.getElementById("modalConteudo").innerHTML = `
 
         <div class="detalhe-setor">
 
@@ -162,38 +128,29 @@ function abrirSetor(
 
     `;
 
-    modal.classList.add("aberto");
+  modal.classList.add("aberto");
 }
 
-
-// =============================
+//
 // EXPANDIR MAPA
-// =============================
+//
 
 function expandirMapa() {
+  const mapa = document.getElementById("mapaPainel");
 
-    const mapa =
-        document.getElementById("mapaPainel");
-
-    mapa.classList.toggle("expandido");
+  mapa.classList.toggle("expandido");
 }
 
-
-// =============================
+//
 // NOVA AVALIAÇÃO
-// =============================
+//
 
 function novaAvaliacao() {
+  const modal = document.getElementById("modalOverlay");
 
-    const modal =
-        document.getElementById("modalOverlay");
+  document.getElementById("modalTitulo").textContent = "Nova Avaliação Técnica";
 
-    document.getElementById("modalTitulo")
-        .textContent = "Nova Avaliação Técnica";
-
-
-    document.getElementById("modalConteudo")
-        .innerHTML = `
+  document.getElementById("modalConteudo").innerHTML = `
 
         <p>
             Futuramente este botão abrirá
@@ -230,45 +187,32 @@ function novaAvaliacao() {
 
     `;
 
-    modal.classList.add("aberto");
+  modal.classList.add("aberto");
 }
 
-
-// suporte // 
+// suporte //
 
 function abrirSuporte() {
-
-    abrirModal(
-        "Suporte GeoMTR",
-        "Para suporte técnico, entre em contato com o administrador do sistema pelo ramal interno 204 ou pelo e-mail suporte@geomtr.local."
-    );
+  abrirModal(
+    "Suporte GeoMTR",
+    "Para suporte técnico, entre em contato com o administrador do sistema pelo ramal interno 204 ou pelo e-mail suporte@geomtr.local.",
+  );
 }
 
+//  ESC fecha janelas //
 
-//  ESC fecha janelas // 
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    fecharModal();
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+    document.getElementById("perfilMenu").classList.remove("aberto");
 
-        if (event.key === "Escape") {
-
-            fecharModal();
-
-            document
-                .getElementById("perfilMenu")
-                .classList.remove("aberto");
-
-            document
-                .getElementById("mapaPainel")
-                .classList.remove("expandido");
-        }
-
-    }
-);
+    document.getElementById("mapaPainel").classList.remove("expandido");
+  }
+});
 
 // sair do sistema ir a tela de login
 
 function sairSistema() {
-    window.location.href = "./index.html";
+  window.location.href = "./index.html";
 }

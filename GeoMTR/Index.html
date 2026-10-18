@@ -1,139 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GeoMTR | Acesso ao Sistema</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-
+  <body>
     <main class="login-container">
+      <section class="painel-info">
+        <div class="logo"><span>GEO</span>MTR</div>
 
-        <section class="painel-info">
+        <h1>Gestão inteligente de<br />operações minerais.</h1>
 
-            <div class="logo">
-                <span>GEO</span>MTR
+        <p class="descricao">
+          Plataforma integrada para monitoramento de áreas, setores, operações e
+          avaliações técnicas.
+        </p>
+
+        <div class="linha"></div>
+
+        <div class="informacoes">
+          <div class="info">
+            <span class="numero">01</span>
+            <div>
+              <strong>Áreas</strong>
+              <p>Controle geográfico</p>
+            </div>
+          </div>
+
+          <div class="info">
+            <span class="numero">02</span>
+            <div>
+              <strong>Operações</strong>
+              <p>Rastreabilidade</p>
+            </div>
+          </div>
+
+          <div class="info">
+            <span class="numero">03</span>
+            <div>
+              <strong>Dados</strong>
+              <p>Gestão centralizada</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="area-login">
+        <div class="status">
+          <span class="status-bolinha"></span>
+          SISTEMA OPERACIONAL
+        </div>
+
+        <div class="login-box">
+          <p class="identificacao">ACESSO INTERNO</p>
+
+          <h2>Bem-vindo.</h2>
+
+          <p class="login-descricao">
+            Insira suas credenciais para acessar o sistema GeoMTR.
+          </p>
+
+          <form id="loginForm">
+            <div class="campo">
+              <label for="usuario">USUÁRIO</label>
+
+              <input
+                type="text"
+                id="usuario"
+                name="usuario"
+                placeholder="Digite seu usuário"
+                required
+              />
             </div>
 
-            <h1>Gestão inteligente de<br>operações minerais.</h1>
+            <div class="campo">
+              <div class="senha-label">
+                <label for="senha">SENHA</label>
+                <span>ACESSO SEGURO</span>
+              </div>
 
-            <p class="descricao">
-                Plataforma integrada para monitoramento de áreas,
-                setores, operações e avaliações técnicas.
-            </p>
-
-            <div class="linha"></div>
-
-            <div class="informacoes">
-
-                <div class="info">
-                    <span class="numero">01</span>
-                    <div>
-                        <strong>Áreas</strong>
-                        <p>Controle geográfico</p>
-                    </div>
-                </div>
-
-                <div class="info">
-                    <span class="numero">02</span>
-                    <div>
-                        <strong>Operações</strong>
-                        <p>Rastreabilidade</p>
-                    </div>
-                </div>
-
-                <div class="info">
-                    <span class="numero">03</span>
-                    <div>
-                        <strong>Dados</strong>
-                        <p>Gestão centralizada</p>
-                    </div>
-                </div>
-
+              <input
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="••••••••"
+                required
+              />
             </div>
 
-        </section>
+            <p id="erroLogin"></p>
 
+            <button type="submit">
+              ACESSAR SISTEMA
+              <span>→</span>
+            </button>
+          </form>
 
-        <section class="area-login">
+          <div class="separador"></div>
 
-            <div class="status">
-                <span class="status-bolinha"></span>
-                SISTEMA OPERACIONAL
-            </div>
+          <div class="suporte">
+            <p>Problemas para acessar?</p>
+            <span>Contate o administrador do sistema.</span>
+          </div>
+        </div>
 
-            <div class="login-box">
-
-                <p class="identificacao">ACESSO INTERNO</p>
-
-                <h2>Bem-vindo.</h2>
-
-                <p class="login-descricao">
-                    Insira suas credenciais para acessar o sistema GeoMTR.
-                </p>
-
-                <form id="loginForm">
-
-                    <div class="campo">
-                        <label for="usuario">USUÁRIO</label>
-
-                        <input
-                            type="text"
-                            id="usuario"
-                            name="usuario"
-                            placeholder="Digite seu usuário"
-                            required
-                        >
-                    </div>
-
-                    <div class="campo">
-
-                        <div class="senha-label">
-                            <label for="senha">SENHA</label>
-                            <span>ACESSO SEGURO</span>
-                        </div>
-
-                        <input
-                            type="password"
-                            id="senha"
-                            name="senha"
-                            placeholder="••••••••"
-                            required
-                        >
-
-                    </div>
-
-                  <p id="erroLogin"></p>
-                  
-                    <button type="submit">
-                        ACESSAR SISTEMA
-                        <span>→</span>
-                    </button>
-
-                </form>
-
-                <div class="separador"></div>
-
-                <div class="suporte">
-                    <p>Problemas para acessar?</p>
-                    <span>Contate o administrador do sistema.</span>
-                </div>
-
-            </div>
-
-            <footer>
-                <span>GeoMTR</span>
-                <span>v0.0.3</span>
-                <span>Ac</span>
-            </footer>
-
-        </section>
-
+        <footer>
+          <span>GeoMTR</span>
+          <span>v0.5</span>
+          <span>Ac</span>
+        </footer>
+      </section>
     </main>
-  <script src="login.js"></script>
-
-</body>
+    <script src="login.js"></script>
+  </body>
 </html>
