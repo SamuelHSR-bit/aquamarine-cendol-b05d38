@@ -456,3 +456,30 @@
     width: 100%;
   }
 }
+
+.exportar-botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-height: 42px;
+  margin: 0;
+  padding: 0 18px;
+  border: 1px solid #477957;
+  border-radius: 7px;
+  background: #477957;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.exportar-botao:hover {
+  background: #102018;
+  transform: translateY(-1px);
+}
