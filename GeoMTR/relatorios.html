@@ -92,7 +92,11 @@
           </p>
         </div>
 
-        <button class="relatorio-botao" type="button" onclick="novaAvaliacao()">
+        <button
+          type="button"
+          class="btn-novo-relatorio"
+          onclick="abrirNovoRelatorio()"
+        >
           + Novo relatório
         </button>
       </section>
@@ -167,6 +171,105 @@
           Exibindo meus relatórios
         </div>
       </section>
+      <!-- Modal: Novo relatório -->
+      <div class="modal-overlay" id="modalNovoRelatorio">
+        <div class="modal-relatorio">
+          <div class="modal-relatorio-topo">
+            <div>
+              <h2>Novo relatório</h2>
+              <p>Preencha os dados para registrar uma avaliação.</p>
+            </div>
+
+            <button
+              type="button"
+              class="fechar-modal"
+              onclick="fecharNovoRelatorio()"
+            >
+              ×
+            </button>
+          </div>
+
+          <form id="formNovoRelatorio">
+            <div class="campo-relatorio">
+              <label for="tituloRelatorio">Título do relatório *</label>
+              <input
+                type="text"
+                id="tituloRelatorio"
+                placeholder="Ex.: Avaliação do setor ST-03"
+                required
+              />
+            </div>
+
+            <div class="campo-relatorio">
+              <label for="setorRelatorio">Setor *</label>
+              <select id="setorRelatorio" required>
+                <option value="">Selecione um setor</option>
+                <option value="ST-01">ST-01</option>
+                <option value="ST-02">ST-02</option>
+                <option value="ST-03">ST-03</option>
+                <option value="ST-04">ST-04</option>
+                <option value="ST-05">ST-05</option>
+              </select>
+            </div>
+
+            <div class="campo-relatorio">
+              <label for="tipoRelatorio">Tipo de relatório *</label>
+              <select id="tipoRelatorio" required>
+                <option value="">Selecione o tipo</option>
+                <option value="Avaliação geológica">Avaliação geológica</option>
+                <option value="Monitoramento">Monitoramento</option>
+                <option value="Extração mineral">Extração mineral</option>
+                <option value="Inspeção de área">Inspeção de área</option>
+              </select>
+            </div>
+
+            <div class="campo-relatorio">
+              <label for="statusRelatorio">Status</label>
+              <select id="statusRelatorio">
+                <option value="Em análise">Em análise</option>
+                <option value="Concluído">Concluído</option>
+                <option value="Pendente">Pendente</option>
+              </select>
+            </div>
+
+            <!-- Aparece somente no relatório geral do administrador -->
+            <div class="campo-relatorio" id="campoResponsavel">
+              <label for="responsavelRelatorio">Responsável *</label>
+              <select id="responsavelRelatorio">
+                <option value="">Selecione o responsável</option>
+                <option value="Samuel Oliveira">Samuel Oliveira</option>
+                <option value="Ana Martins">Ana Martins</option>
+                <option value="Carlos Souza">Carlos Souza</option>
+                <option value="Fernanda Lima">Fernanda Lima</option>
+              </select>
+            </div>
+
+            <div class="campo-relatorio">
+              <label for="descricaoRelatorio">Descrição *</label>
+              <textarea
+                id="descricaoRelatorio"
+                rows="4"
+                placeholder="Descreva a avaliação realizada..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="acoes-modal-relatorio">
+              <button
+                type="button"
+                class="btn-cancelar"
+                onclick="fecharNovoRelatorio()"
+              >
+                Cancelar
+              </button>
+
+              <button type="submit" class="btn-salvar">Salvar relatório</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="avisoRelatorio" class="aviso-relatorio" role="status"></div>
 
       <footer>
         <div class="footer-logo">
