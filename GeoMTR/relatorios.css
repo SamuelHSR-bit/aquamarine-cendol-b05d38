@@ -1,0 +1,289 @@
+/* RELATÓRIOS — GeoMTR */
+
+.pagina-relatorios {
+  background: #f3f5f3;
+  color: #182019;
+}
+
+.pagina-relatorios .conteudo {
+  min-width: 0;
+}
+
+.relatorio-intro {
+  padding: 32px 35px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.relatorio-intro .mini-titulo {
+  margin-bottom: 8px;
+}
+
+.relatorio-intro h2 {
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+
+.relatorio-intro p:last-child {
+  color: #727b74;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.relatorio-botao {
+  width: auto;
+  min-height: 40px;
+  margin: 0;
+  padding: 0 16px;
+  border: 1px solid #477957;
+  border-radius: 6px;
+  background: #477957;
+  color: white;
+  font-size: 11px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.relatorio-botao:hover {
+  background: #102018;
+}
+
+.relatorio-stats {
+  padding: 0 35px 22px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.relatorio-stat {
+  padding: 20px;
+  background: white;
+  border: 1px solid #dfe5e0;
+  border-radius: 9px;
+}
+
+.relatorio-stat span {
+  display: block;
+  color: #727b74;
+  font-size: 11px;
+}
+
+.relatorio-stat strong {
+  display: block;
+  margin: 10px 0 5px;
+  font-size: 27px;
+}
+
+.relatorio-stat small {
+  color: #8c948e;
+  font-size: 10px;
+}
+
+.relatorio-painel {
+  margin: 0 35px 28px;
+  background: white;
+  border: 1px solid #dfe5e0;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.relatorio-painel-topo {
+  padding: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.relatorio-painel-topo h3 {
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.relatorio-painel-topo p {
+  color: #727b74;
+  font-size: 11px;
+}
+
+.relatorio-filtros {
+  padding: 0 21px 18px;
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) repeat(2, minmax(130px, 180px));
+  gap: 10px;
+}
+
+.relatorio-filtros input,
+.relatorio-filtros select {
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #dfe5e0;
+  border-radius: 6px;
+  background: white;
+  color: #465249;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.relatorio-tabela-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.relatorio-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.relatorio-tabela th {
+  padding: 13px 17px;
+  background: #f7f9f7;
+  border-top: 1px solid #edf0ed;
+  border-bottom: 1px solid #e5eae5;
+  color: #78837b;
+  font-size: 9px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.relatorio-tabela td {
+  padding: 15px 17px;
+  border-bottom: 1px solid #edf0ed;
+  color: #58645b;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.relatorio-tabela tbody tr:hover {
+  background: #fafcfa;
+}
+
+.relatorio-tabela tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.relatorio-codigo {
+  color: #315f3b;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.relatorio-status {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 5px;
+  font-size: 9px;
+}
+
+.relatorio-status.concluido {
+  background: #e5f3e7;
+  color: #377443;
+}
+
+.relatorio-status.analise {
+  background: #fff1dc;
+  color: #94631c;
+}
+
+.relatorio-status.rascunho {
+  background: #eef0ee;
+  color: #667168;
+}
+
+.relatorio-acoes {
+  display: flex;
+  gap: 6px;
+}
+
+.relatorio-acoes button {
+  width: auto;
+  height: 30px;
+  margin: 0;
+  padding: 0 9px;
+  border: 1px solid #dfe5e0;
+  border-radius: 5px;
+  background: white;
+  color: #365b41;
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+.relatorio-acoes button:hover {
+  background: #edf4ee;
+}
+
+.relatorio-vazio {
+  padding: 30px;
+  text-align: center;
+  color: #727b74;
+  font-size: 12px;
+}
+
+.relatorio-rodape-tabela {
+  padding: 14px 21px;
+  border-top: 1px solid #edf0ed;
+  color: #8b968e;
+  font-size: 10px;
+}
+
+@media (max-width: 1050px) {
+  .relatorio-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .relatorio-intro {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 25px 18px 20px;
+  }
+
+  .relatorio-intro h2 {
+    font-size: 23px;
+  }
+
+  .relatorio-stats {
+    padding: 0 18px 20px;
+    gap: 10px;
+  }
+
+  .relatorio-stat {
+    padding: 15px;
+  }
+
+  .relatorio-stat strong {
+    font-size: 23px;
+  }
+
+  .relatorio-painel {
+    margin: 0 18px 24px;
+  }
+
+  .relatorio-painel-topo {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 17px;
+  }
+
+  .relatorio-filtros {
+    padding: 0 17px 17px;
+    grid-template-columns: 1fr;
+  }
+
+  .relatorio-tabela th,
+  .relatorio-tabela td {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 430px) {
+  .relatorio-stats {
+    grid-template-columns: 1fr;
+  }
+}
