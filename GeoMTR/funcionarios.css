@@ -148,7 +148,6 @@
   margin: 0;
   padding: 0;
   justify-content: center;
-  border: 1px solid var(--func-borda);
   background: #fff;
   color: var(--func-texto);
   font-size: 19px;

@@ -1415,3 +1415,19 @@ footer small {
 }
 
 /* gambiarra para sidebar ficar fechada apos iniciar o sistema */
+
+/* botão de meus relatorios em baixo do mapa */
+
+a.acao {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+a.acao:visited,
+a.acao:hover,
+a.acao:active {
+  text-decoration: none;
+  color: inherit;
+}
