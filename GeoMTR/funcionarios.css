@@ -613,9 +613,6 @@
   color: var(--func-verde);
   letter-spacing: 1px;
 }
-.pagina-funcionarios .sidebar-overlay {
-  display: none;
-}
 .pagina-funcionarios .func-modal-overlay {
   position: fixed;
   inset: 0;
